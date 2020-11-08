@@ -24,7 +24,7 @@ h1 {
     border-radius: var(--border-radius);
     cursor: pointer;
     text-transform: uppercase;
-    width: 17rem;
+    width: 20rem;
     text-align: center;
     margin: 1rem auto;
     user-select: none;
@@ -92,7 +92,7 @@ a:active {
 
 /* Modal */
 .modal-container {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
     display: none;
     position: fixed;
     top: 0;
