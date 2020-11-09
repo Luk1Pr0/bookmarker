@@ -11,10 +11,34 @@ function showModal() {
     websiteNameEl.focus();
 }
 
+// Validate form
+function validate(nameValue, urlValue) {
+    const expression = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/g;
+    const regEx = new RegExp(expression);
+    if (!nameValue || !urlValue) {
+        alert("Please fill in both fields");
+        return false;
+    }
+    if (!urlValue.match(regEx)) {
+        alert("Please provide a valid web address url");
+        return false;
+    }
+    // Valid
+    return true;
+}
+
 // Handle data from the form
 function storeBookmark(e) {
     e.preventDefault();
-    console.log(e);
+    const nameValue = websiteNameEl.value;
+    let urlValue = websiteUrlEl.value;
+    if (!urlValue.includes("http://", "https://")) {
+        urlValue = `https://${urlValue}`;
+    }
+    console.log(nameValue, urlValue);
+    if (!validate(nameValue, urlValue)) {
+        return false;
+    }
 }
 
 // Event listeners
