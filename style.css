@@ -127,7 +127,7 @@ a:active {
 .close-icon {
     float: right;
     color: white;
-    font-size: 1rem;
+    font-size: 2rem;
     cursor: pointer;
     margin: 1rem;
 }
