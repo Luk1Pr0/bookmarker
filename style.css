@@ -88,6 +88,7 @@ a:active {
 .name img {
     width: 2rem;
     height: auto;
+    margin-right: 0.5rem;
 }
 
 /* Modal */

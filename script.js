@@ -29,6 +29,37 @@ function validate(nameValue, urlValue) {
     return true;
 }
 
+function buildBookmarks() {
+    // Build items
+    bookmarks.forEach((bookmark) => {
+        const {name, url} = bookmark;
+        // Item element
+        const item = document.createElement("div");
+        item.classList.add("item");
+        // Close icon
+        const icon = document.createElement("i");
+        icon.classList.add("far", "fa-times-circle", "close-icon")
+        icon.setAttribute("title", "Delete bookmark");
+        icon.setAttribute("onclick", `deleteBookmark("${url}")`);
+        // Favicon / link container
+        const linkInfo = document.createElement("div");
+        linkInfo.classList.add("name");
+        // Favicon
+        const favicon = document.createElement("img");
+        favicon.setAttribute("src", `https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
+        favicon.setAttribute("alt", "Favicon");
+        // Link
+        const link = document.createElement("a");
+        link.setAttribute("href", `${url}`);
+        link.setAttribute("target", "_blank");
+        link.textContent = name;
+        // Appending data to bookmarks container
+        linkInfo.append(favicon, link);
+        item.append(icon, linkInfo);
+        bookmarksContainer.appendChild(item);
+    });
+}
+
 function fetchBookmarks() {
     // get bookmarks from local storage if available
     if (localStorage.getItem("bookmarks")) {
@@ -43,7 +74,7 @@ function fetchBookmarks() {
         ];
         localStorage.setItem("bookmarks", JSON.stringify(bookmarks)); 
     }
-    console.log(bookmarks);
+    buildBookmarks();
 }
 
 // Handle data from the form
